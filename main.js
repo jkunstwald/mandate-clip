@@ -20,25 +20,26 @@ $(function() {
     $(window).on('focus', function() {
         $('#clip-input').focus();
     });
+
+    groupManager.load();
 });
-
-
-function parseInput(overrideInput) {
-    core.useFirstSuggestion();
-
-    var receivedCommand = overrideInput || $('#clip-input').val(),
-        argumentArray = receivedCommand.split(' '),
-        receivedUrl = groupManager.getUrl(argumentArray);
-
-    utility.openTab('http://' + receivedUrl);
-
-    $('#clip-input').val('').focus();
-    this.updateSuggestions();
-}
 
 var core = {
 
     suggestions: [],
+
+    parseInput: function(overrideInput) {
+        this.useFirstSuggestion();
+
+        var receivedCommand = overrideInput || $('#clip-input').val(),
+            argumentArray = receivedCommand.split(' '),
+            receivedUrl = groupManager.getUrl(argumentArray);
+
+        utility.openTab('http://' + receivedUrl);
+
+        $('#clip-input').val('').focus();
+        this.updateSuggestions();
+    },
 
     updateSuggestions: function() {
         var inputString = $('#clip-input').val(),
@@ -65,8 +66,10 @@ var core = {
 var groupManager = {
 
     groups: {
+        // TODO: Editable
 
         default: {
+            type: 'base',
             base: '{$var1}.anzeigen-aufgabe{$var2}',
             vars: ['var1', 'var2'],
             var1: {
@@ -99,6 +102,37 @@ var groupManager = {
 
     },
 
+    createGroup: function(name, options) {
+        if (this.groups[name]) return false;
+        options = options || { type: 'flat' };
+
+        this.groups[name] = {
+            type: options.type,
+            base: options.base || null,
+            vars: options.vars || null
+        };
+
+        return true;
+    },
+
+    writeToGroup: function(groupName, data) {
+        var targetGroup = this.groups[groupName];
+        if (!targetGroup) return false;
+
+        if (targetGroup.type === 'flat') {
+            $.each(data, function(i, obj) {
+                targetGroup.content[i] = obj;
+            });
+        } else if (targetGroup.type === 'base') {
+            $.each(data, function(i, obj) {
+                $.each(obj, function(j, subObj) {
+                    if (!targetGroup[i]) targetGroup[i] = {};
+                    targetGroup[i][j] = subObj;
+                });
+            });
+        }
+    },
+
     getUrl: function(args) {
         var groupName = 'default',
             variables = [],
@@ -109,6 +143,8 @@ var groupManager = {
             args.shift();
             variables = args;
         } else variables = args;
+
+        // TODO: Base / Flat distinction
 
         outputUrl = this.groups[groupName].base;
 
@@ -124,6 +160,7 @@ var groupManager = {
     },
 
     getSuggestion: function(args) {
+        // TODO: Group detection
         var matches = [],
             inputLength,
             inputString;
@@ -149,10 +186,28 @@ var groupManager = {
         }
 
         return matches;
+    },
+
+    // -- Localstorage --
+
+    backup: function() {
+        localStorage.setItem('clip_groups', JSON.stringify(this.groups));
+    },
+
+    load: function() {
+        var retrievedData = localStorage.getItem('clip_groups');
+
+        if (retrievedData) {
+            try {
+                var retrievedObject = JSON.parse(retrievedData);
+            } catch (err) {
+                return false;
+            }
+
+            this.groups = retrievedObject;
+
+        } else return false;
     }
-
-
-
 
 };
 

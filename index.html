@@ -12,16 +12,22 @@
 
             <div id="input">
 
-                <form onsubmit="parseInput(); return false;">
+                <form onsubmit="core.parseInput(); return false;">
                     <input type="text" autofocus="true" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" placeholder="Starting up" id="clip-input" onclick="uiEvents.onFocus()">
                     <button>Go!</button>
 
                 </form>
 
                 <div id="clip-suggestions"></div>
+
+            </div>
+
+            <div id="settings">
+                <h1>Settings</h1>
             </div>
 
         </div>
+
 
     </body>
 </html>
