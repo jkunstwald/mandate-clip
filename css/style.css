@@ -32,3 +32,22 @@ body {
     text-indent: 50px;
     margin: 0;
 }
+
+#input #clip-suggestions {
+    background-color: crimson;
+    text-indent: 50px;
+    color: rgba(255,255,255,0.4);
+    font-size: 20px;
+    font-weight: 200;
+    position: relative;
+}
+
+#input #clip-suggestions .clip-suggestion {
+    padding: 5px 0;
+    display: block;
+    position: relative;
+}
+
+#input #clip-suggestions .clip-suggestion .clip-highlight {
+    color: #fff;
+}
