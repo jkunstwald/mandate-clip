@@ -1,0 +1,25 @@
+<html>
+    <head>
+        <title>Clip</title>
+        <link href='https://fonts.googleapis.com/css?family=Open+Sans:400,300,700,300italic' rel='stylesheet' type='text/css'>
+        <link rel="stylesheet" href="css/style.css">
+        <script src="http://code.jquery.com/jquery-1.12.1.min.js"></script>
+        <script src="main.js"></script>
+    </head>
+    <body>
+
+        <div id="wrapper">
+
+            <div id="input">
+
+                <form onsubmit="parseInput(); return false;">
+                    <input type="text" autofocus="true" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" placeholder="Starting up" id="clip-input" onclick="uiEvents.onFocus()">
+                    <button>Go!</button>
+
+                </form>
+            </div>
+
+        </div>
+
+    </body>
+</html>
