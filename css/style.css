@@ -48,6 +48,6 @@ body {
     position: relative;
 }
 
-#input #clip-suggestions .clip-suggestion .clip-highlight {
+#input #clip-suggestions .clip-suggestion .clip-highlight:first-child {
     color: #fff;
 }

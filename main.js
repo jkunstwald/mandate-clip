@@ -5,7 +5,8 @@ $(function() {
         .attr('placeholder', 'Enter a Command')
         .on('input', function() {
             core.updateSuggestions();
-        });
+        })
+        .focus();
 
     $(document).keydown(function(e) {
         switch (e.which) {
@@ -15,10 +16,16 @@ $(function() {
                 break;
         }
     });
+
+    $(window).on('focus', function() {
+        $('#clip-input').focus();
+    });
 });
 
 
 function parseInput(overrideInput) {
+    core.useFirstSuggestion();
+
     var receivedCommand = overrideInput || $('#clip-input').val(),
         argumentArray = receivedCommand.split(' '),
         receivedUrl = groupManager.getUrl(argumentArray);
