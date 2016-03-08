@@ -54,6 +54,7 @@ body {
 
 #settings {
     position: fixed;
+    overflow: scroll;
     top: 0;
     left: 0;
     right: 0;
@@ -73,3 +74,74 @@ body {
     pointer-events: all;
     transform: translateY(0) scale(1);
 }
+
+#settings .clip-group {
+    padding: 15px;
+    margin: 15px;
+    border: 1px solid gray;
+    border-radius: 3px;
+}
+
+#settings .clip-group .clip-group-input {
+    padding: 10px;
+}
+
+#settings .clip-group .clip-group-input label {
+    font-family: monospace;
+    display: inline-block;
+    vertical-align: top;
+    width: 150px;
+    color: #888;
+    font-size: 18px;
+}
+
+#settings .clip-group .clip-group-input textarea,
+#settings .clip-group .clip-group-input input,
+#settings .clip-settings-input {
+    display: inline-block;
+    border: none;
+    border-bottom: 1px solid crimson;
+    font-weight: 200 !important;
+    font-size: 18px !important;
+    outline: none !important;
+    width: 500px;
+}
+
+#settings .clip-newgroup {
+    margin: 15px;
+    border-radius: 3px;
+}
+
+#settings .clip-button {
+    background-color: crimson;
+    border-radius: 3px;
+    padding: 10px;
+    margin: 10px;
+    display: inline-block;
+    cursor: pointer;
+    color: #fff;
+}
+
+#settings .clip-settings-input {
+    width: 200px;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
