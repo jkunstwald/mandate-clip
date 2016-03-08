@@ -5,9 +5,17 @@ var ccg = {
 	///////////////////////////////////
 
 	//
-	//	Create an infinitely complex
-	//	object with your folders and
-	//	URLs here. Examples below.
+	//  Create an infinitely complex
+	//  object with your folders and
+	//  URLs here. Examples below.
+	//
+	//  If anything breaks, check
+	//  the syntax in this file.
+	//  
+	//  Note that you need to add 
+	//  quotations "" to a key
+	//  if it starts with a number
+	//  or a special character.
 	//
 
 	music: {
