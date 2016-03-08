@@ -1,9 +1,5 @@
 var ccg = {
 
-	///////////////////////////////////
-	//         CUSTOM CONFIG         //
-	///////////////////////////////////
-
 	//
 	//  Create an infinitely complex
 	//  object with your folders and
@@ -17,6 +13,10 @@ var ccg = {
 	//  if it starts with a number
 	//  or a special character.
 	//
+
+	///////////////////////////////////
+	//     START OF CUSTOM CONFIG    //
+	///////////////////////////////////
 
 	music: {
 
@@ -48,9 +48,6 @@ var ccg = {
 		}
 
 	}
-
-
-
 
 	///////////////////////////////////
 	//     END OF CUSTOM CONFIG      //
