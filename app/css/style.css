@@ -7,12 +7,50 @@ body {
     font-family: 'Open Sans', sans-serif;
 }
 
+a {
+    color: crimson;
+}
+
+pre {
+    display: inline;
+    font-size: inherit;
+}
+
+#message {
+    position: absolute;
+    top: 50px;
+    left: 50%;
+    margin-left: -275px;
+    width: 500px;
+    border-radius: 10px;
+    opacity: 0.75;
+    padding: 25px;
+    text-align: center;
+    box-shadow: 0 5px 5px rgba(0,0,0,0.1);
+    display: none;
+}
+
+#message.active {
+    display: block;
+}
+
 #input {
     margin: 175px auto;
     width: 800px;
     border: 3px solid crimson;
     border-radius: 10px;
+    opacity: 0.75;
+    transform: translateY(20px);
+    box-shadow: 0 5px 5px rgba(0,0,0,0.1);
+
+
+    transition: all 0.5s;
+}
+
+#input.awake {
     box-shadow: 0 15px 40px rgba(0,0,0,0.2);
+    opacity: 1;
+    transform: translateY(0);
 }
 
 #input button {

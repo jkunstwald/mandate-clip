@@ -1,13 +1,6 @@
 var ccg = ccg || {};
 
 $(function() {
-    $('#clip-input')
-        .attr('placeholder', 'Enter a Command')
-        .on('input', function() {
-            core.updateSuggestions();
-        })
-        .focus();
-
     $(document).keydown(function(e) {
         switch (e.which) {
             case 9:
@@ -22,7 +15,19 @@ $(function() {
     });
 
     var loadAnswer = groupManager.load();
-    console.log(loadAnswer);
+    if (!loadAnswer) {
+        $('#clip-input')
+            .attr('placeholder', 'No Data Found');
+        $('#message').addClass('active');
+    } else {
+        $('#input').addClass('awake');
+        $('#clip-input')
+            .attr('placeholder', 'Enter a Command')
+            .on('input', function() {
+                core.updateSuggestions();
+            })
+            .focus();
+    }
 });
 
 var core = {
@@ -148,7 +153,7 @@ var groupManager = {
         // 1. Custom.js
         // 2. Localstorage
 
-        if (ccg) {
+        if (Object.keys(ccg).length) {
             this.groups = ccg;
             return "success-custom";
         }
