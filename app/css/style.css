@@ -4,7 +4,20 @@
 }
 
 body {
+    background-image: url(https://source.unsplash.com/category/nature/1920x1080);
+    background-position: 50% 0;
+    background-size: cover;
     font-family: 'Open Sans', sans-serif;
+}
+
+#underlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(255,255,255,0.75);
+
 }
 
 a {
@@ -42,6 +55,7 @@ pre {
     opacity: 0.75;
     transform: translateY(20px);
     box-shadow: 0 5px 5px rgba(0,0,0,0.1);
+    background-color: rgba(255,255,255,0.85);
 
 
     transition: all 0.5s;
