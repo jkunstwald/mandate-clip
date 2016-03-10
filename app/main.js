@@ -33,12 +33,6 @@ $(function() {
             .focus();
     }
 
-    if (customLoadAnswer === "success-custom-nochange") {
-        $('#message')
-            .html('Hi! Change the content of <a href="custom.js">custom.js</a> to get started.')
-            .addClass('active');
-    }
-
     if (settingsLoadAnswer) {
         settingsManager.evaluateSettings();
     }
