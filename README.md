@@ -14,6 +14,8 @@ Reads from a JS Object, and comprehends infinitely nested objects.
 
 Fill `custom.js` with your bookmarks.
 
+Change your settings in `settings.js` if you want to.
+
 Set it to your home page.
 
 Done!
