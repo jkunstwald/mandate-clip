@@ -11,7 +11,7 @@ var ccs = {
     ///////////////////////////////////
 
     background: {
-        category: "nature",
+        category: "buildings",
         onlyChangeDaily: false
     }
 

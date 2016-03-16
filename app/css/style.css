@@ -10,6 +10,12 @@ body {
     font-family: 'Open Sans', sans-serif;
 }
 
+#wrapper {
+    height: 100%;
+    position: relative;
+    overflow-y: hidden;
+}
+
 #underlay {
     position: fixed;
     top: 0;
