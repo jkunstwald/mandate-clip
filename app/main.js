@@ -19,18 +19,18 @@ $(function() {
     var customLoadAnswer = groupManager.load(),
         settingsLoadAnswer = settingsManager.load();
 
-    if (!customLoadAnswer) {
-        $('#clip-input').attr('placeholder', 'No Data Found');
-        $('#message').addClass('active');
-
-    } else {
+    if (customLoadAnswer) {
         $('#input').addClass('awake');
         $('#clip-input')
             .attr('placeholder', 'Enter a Command')
-            .on('input', function() {
+            .on('input', function () {
                 core.updateSuggestions();
             })
             .focus();
+    } else {
+        $('#clip-input').attr('placeholder', 'No Data Found');
+        $('#message').addClass('active');
+
     }
 
     if (customLoadAnswer === "success-custom-nochange") {
@@ -63,14 +63,15 @@ var core = {
     parseInput: function(overrideInput) {
         if (!overrideInput) this.useFirstSuggestion();
 
-        var receivedCommand = overrideInput || $('#clip-input').val().trim(),
+        var inputElem = $('#clip-input'),
+            receivedCommand = overrideInput || inputElem.val().trim(),
             argumentArray = receivedCommand.split(' '),
             receivedUrl = groupManager.getUrl(argumentArray);
 
         if (!receivedUrl) return false;
 
         utility.openTab('http://' + receivedUrl);
-        $('#clip-input').val('').focus();
+        inputElem.val('').focus();
         this.updateSuggestions();
     },
 
@@ -93,7 +94,7 @@ var core = {
             $('#clip-input').val(this.suggestions[0]);
             this.updateSuggestions();
         }
-    },
+    }
 };
 
 var groupManager = {
@@ -123,7 +124,7 @@ var groupManager = {
             inputLength = args[0].length;
             inputString = args[0];
 
-            $.each(this.groups, function(i, obj) {
+            $.each(this.groups, function(i) {
                 if (i.substr(0,inputLength) === inputString) matches.push(i + ' ');
             });
 
@@ -131,7 +132,7 @@ var groupManager = {
             // Infinite Folder searching
 
             var objectRoot = this.groups,
-                stringRoot = "";
+                stringRoot = "",
                 depthCounter = 0;
 
             $.each(args, function(i, obj) {
@@ -153,7 +154,7 @@ var groupManager = {
             args.pop();
 
             if (typeof objectRoot === 'object') {
-                $.each(objectRoot, function(i, obj) {
+                $.each(objectRoot, function(i) {
                     if (i.substr(0,inputLength) === inputString) matches.push(stringRoot + i + ' ');
                     else if (!inputString) matches.push(stringRoot + i + ' ');
                 });
@@ -182,7 +183,7 @@ var groupManager = {
         if (Object.keys(ccg).length) {
             this.groups = ccg;
 
-            if (btoa(JSON.stringify(ccg)) === customBase64) return "success-custom-nochange"
+            if (btoa(JSON.stringify(ccg)) === customBase64) return "success-custom-nochange";
             else return "success-custom";
         }
 
