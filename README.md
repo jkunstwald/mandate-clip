@@ -8,7 +8,7 @@ Manage URLs in groups and access them super fast.
 
 [Take a look at the demo](http://jkunstwald.github.io/mandate-clip/) on Github Pages.
 
-## What does this do?
+## What it does
 
 A simple launcher to quickly open any given bookmark.
 
