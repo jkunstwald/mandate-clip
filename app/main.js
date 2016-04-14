@@ -42,6 +42,18 @@ $(function() {
     if (settingsLoadAnswer) {
         settingsManager.evaluateSettings();
     }
+
+    // Drag and Drop Initialization
+    if (window.File && window.FileList && window.FileReader) {
+        var xhr = new XMLHttpRequest();
+        if (xhr.upload) {
+            var wrapperElem = $('#wrapper');
+            wrapperElem
+                .on("dragover", utility.dragCancel)
+                .on("dragenter", utility.dragCancel)
+                .on("drop", utility.fileDragHandler);
+        }
+    }
 });
 
 var core = {
@@ -227,5 +239,24 @@ var utility = {
         var win = window.open(url, '_blank');
         window.focus();
         if (win) win.focus();
+    },
+
+    dragCancel: function(e) {
+        if (e.preventDefault) e.preventDefault();
+        return false;
+    },
+
+    fileDragHandler: function(e) {
+        e = e || window.event;
+        if (e.preventDefault) e.preventDefault();
+        var files = e.originalEvent.dataTransfer.files,
+            src = utility.createObjectURL(files[0]);
+
+        $('body').css('background-image','url(' + src + ')');
+        return false;
+    },
+
+    createObjectURL: function(object) {
+        return (window.URL) ? window.URL.createObjectURL(object) : window.webkitURL.createObjectURL(object);
     }
 };
