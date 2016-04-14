@@ -1,5 +1,7 @@
 # mandate-clip
 
+![demogif](https://cloud.githubusercontent.com/assets/17261478/14531044/0518c158-025c-11e6-98b1-29eba16370fd.gif)
+
 Manage URLs in groups and access them super fast.
 
 ## Demo
