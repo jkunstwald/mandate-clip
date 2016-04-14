@@ -252,7 +252,7 @@ var utility = {
         var files = e.originalEvent.dataTransfer.files,
             src = utility.createObjectURL(files[0]);
 
-        $('body').css('background-image','url(' + src + ')');
+        if (files[0].type.substr(0, 5) === "image") $('body').css('background-image','url(' + src + ')');
         return false;
     },
 
