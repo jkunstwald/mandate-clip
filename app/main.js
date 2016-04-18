@@ -220,10 +220,10 @@ var settingsManager = {
         var backgroundSettings = {
             category: this.settings.background.category || "nature",
             append: (this.settings.background.onlyChangeDaily) ? "/daily" : ""
-        };
+        },
+            backgroundURL = (this.settings.background.overrideURL) ? this.settings.background.overrideURL : 'https://source.unsplash.com/category/' + backgroundSettings.category + '/1920x1080' + backgroundSettings.append;
 
-        $('body').css('background-image','url(https://source.unsplash.com/category/' + backgroundSettings.category + '/1920x1080' + backgroundSettings.append + ')');
-        
+        $('body').css('background-image','url(' + backgroundURL + ')');
         if (this.settings.showDate) utility.populateStatus();
 
     }

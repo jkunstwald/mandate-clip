@@ -12,7 +12,8 @@ var ccs = {
 
     background: {
         category: "buildings",
-        onlyChangeDaily: false
+        onlyChangeDaily: false,
+        overrideURL: false
     },
 
     showDate: false
