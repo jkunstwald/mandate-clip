@@ -27,3 +27,13 @@ Change your settings in `settings.js` if you want to.
 Set it to your home page.
 
 Done!
+
+## Settings
+
+You can customize your background in a few ways:
+
+1. Choose a category. You'll get random images, served from unsplash.com
+
+2. Enter an override URL. This will override category settings and display your custom image.
+
+3. Drag and drop an image on your computer into the browser. This will set whatever image you drop as the background. Note that this image won't persist on reload.
