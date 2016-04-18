@@ -223,6 +223,8 @@ var settingsManager = {
         };
 
         $('body').css('background-image','url(https://source.unsplash.com/category/' + backgroundSettings.category + '/1920x1080' + backgroundSettings.append + ')');
+        
+        if (this.settings.showDate) utility.populateStatus();
 
     }
 
@@ -259,5 +261,38 @@ var utility = {
 
     createObjectURL: function(object) {
         return (window.URL) ? window.URL.createObjectURL(object) : window.webkitURL.createObjectURL(object);
+    },
+
+    getWeekNumber: function() {
+        var d = new Date;
+        d.setHours(0,0,0);
+        d.setDate(d.getDate() + 4 - (d.getDay()||7));
+        var yearStart = new Date(d.getFullYear(),0,1);
+        return Math.ceil(((d - yearStart) / 86400000 + 1) / 7);
+    },
+
+    getWeekDay: function() {
+        var d = new Date(),
+            weekdays = ["SUN","MON","TUE","WED","THU","FRI","SAT"];
+
+        return weekdays[d.getDay()];
+    },
+
+    getProperDate: function() {
+        var d = new Date();
+
+        return d.getDate() + "." + (d.getMonth() + 1) + "." + d.getFullYear();
+    },
+
+    populateStatus: function() {
+        var statusElem = $('#status'),
+            statusString = "";
+
+        statusString += this.getWeekDay();
+        statusString += " | CW " + this.getWeekNumber();
+        statusString += " | " + this.getProperDate();
+
+
+        $('#status').text(statusString);
     }
 };

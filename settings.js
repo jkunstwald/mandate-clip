@@ -13,7 +13,9 @@ var ccs = {
     background: {
         category: "buildings",
         onlyChangeDaily: false
-    }
+    },
+
+    showDate: false
 
     ///////////////////////////////////
     //    END OF CUSTOM SETTINGS     //
