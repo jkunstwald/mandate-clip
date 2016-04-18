@@ -293,6 +293,6 @@ var utility = {
         statusString += " | " + this.getProperDate();
 
 
-        $('#status').text(statusString);
+        $('#status').text(statusString).addClass('active');
     }
 };
